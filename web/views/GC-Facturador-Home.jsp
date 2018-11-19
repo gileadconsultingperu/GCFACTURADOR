@@ -156,7 +156,7 @@
 
                         <ul class="submenu">
                             <li class="">
-                                <a href="views/">
+                                <a href="views/GC-Facturador-RegistrarComprobante.jsp">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Registrar Comprobantes
                                 </a>

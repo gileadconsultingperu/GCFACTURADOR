@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context antiJARLocking="true" path="/GC-Facturador">
-    <Resource auth="Container" driverClassName="org.postgresql.Driver" maxActive="20" maxIdle="10" maxWait="-1" name="GCProject" password="postgres" type="javax.sql.DataSource" url="jdbc:postgresql://localhost:5432/20452318106?useUnicode=true&amp;characterEncoding=utf-8" username="postgres"/>
+    <Resource 
+        auth="Container" 
+        driverClassName="org.postgresql.Driver" 
+        maxActive="20" 
+        maxIdle="10" 
+        maxWait="-1" 
+        name="GCProject" 
+        password="Thanatos" 
+        type="javax.sql.DataSource" 
+        url="jdbc:postgresql://localhost:5432/20452318106?useUnicode=true&amp;characterEncoding=utf-8" 
+        username="postgres"
+    />
 </Context>

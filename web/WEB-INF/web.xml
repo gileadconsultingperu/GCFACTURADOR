@@ -8,6 +8,18 @@
         <servlet-name>Logout</servlet-name>
         <servlet-class>gilead.gcfacturador.controller.GCFacturador_Logout_Servlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Serie</servlet-name>
+        <servlet-class>gilead.gcfacturador.controller.GCFacturador_Serie_Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Cliente</servlet-name>
+        <servlet-class>gilead.gcfacturador.controller.GCFacturador_Cliente_Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Comprobante</servlet-name>
+        <servlet-class>gilead.gcfacturador.controller.GCFacturador_Comprobante_Servlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -15,6 +27,18 @@
     <servlet-mapping>
         <servlet-name>Logout</servlet-name>
         <url-pattern>/Logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Serie</servlet-name>
+        <url-pattern>/Serie</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Cliente</servlet-name>
+        <url-pattern>/Cliente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Comprobante</servlet-name>
+        <url-pattern>/Comprobante</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
