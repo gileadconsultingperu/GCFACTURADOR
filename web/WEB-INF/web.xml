@@ -20,6 +20,10 @@
         <servlet-name>Comprobante</servlet-name>
         <servlet-class>gilead.gcfacturador.controller.GCFacturador_Comprobante_Servlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Download</servlet-name>
+        <servlet-class>gilead.gcfacturador.util.GCFacturador_Download_Servlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>Comprobante</servlet-name>
         <url-pattern>/Comprobante</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Download</servlet-name>
+        <url-pattern>/Download</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -23,7 +23,7 @@
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta charset="utf-8" />
-        <title>GC BUSINESS - Registrar Venta</title>
+        <title>GC FACTURADOR - Registrar Comprobante</title>
 
         <meta name="description" content="Common form elements and layouts" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -174,13 +174,13 @@
                             <li class="">
                                 <a href="GC-Facturador-RegistrarComprobante.jsp">
                                     <i class="menu-icon fa fa-caret-right"></i>
-                                    Registrar Comprobantes
+                                    Registrar Comprobante
                                 </a>
 
                                 <b class="arrow"></b>
                             </li>
                             <li class="">
-                                <a href="views/">
+                                <a href="GC-Facturador-ListarComprobantes.jsp">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Listar Comprobantes
                                 </a>
@@ -188,7 +188,7 @@
                                 <b class="arrow"></b>
                             </li>
                             <li class="">
-                                <a href="views/">
+                                <a href="#">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Anulaciones
                                 </a>
@@ -196,7 +196,7 @@
                                 <b class="arrow"></b>
                             </li>
                             <li class="">
-                                <a href="views/">
+                                <a href="#">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Listar Comunicaciones de Baja
                                 </a>
@@ -204,7 +204,7 @@
                                 <b class="arrow"></b>
                             </li>
                             <li class="">
-                                <a href="views/">
+                                <a href="#">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Proceso Resumen Diario
                                 </a>
@@ -212,7 +212,7 @@
                                 <b class="arrow"></b>
                             </li>
                             <li class="">
-                                <a href="views/">
+                                <a href="#">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Listar Resumenes Diarios
                                 </a>
@@ -288,11 +288,7 @@
                                                 <input type="text" id="fechaemision" style="width: 120px; font-size: 10px;" tabindex="3" readonly>
                                                 <i id="iconfechaemision" class="ace-icon fa fa-calendar" style="width: 10px; font-size: 10px;"></i>
                                             </div>                                      
-                                            <div class="form-group">
-                                                <label for="exportacion" class="control-label" style="width: 60px; font-size: 10px;">Exportación:</label>
-                                                <input id="switch-exportacion" type="checkbox" value="N"/>
-                                                <label class="lblExportacion" style="font-size: 10px;">No</label>
-                                                &nbsp;&nbsp;&nbsp;
+                                            <div class="form-group hide">
                                                 <label for="operaciongratuita" class="control-label" style="width: 95px; font-size: 10px;">Operación Gratuita:</label>
                                                 <input id="switch-operaciongratuita" type="checkbox" value="N"/>
                                                 <label class="lblOperacionGratuita" style="font-size: 10px;">No</label>
@@ -310,14 +306,18 @@
                                                     <option value="15">15</option>
                                                 </select>
                                                 &nbsp;
+                                                <label for="inputtipocambio" id="lbltipocambio" class="control-label hide" style="width: 60px; font-size: 10px;">Tipo Cambio:</label>
+                                                <input type="text" name="inputtipocambio" id="inputtipocambio" value="0.000" tabindex="5" style="width: 50px; font-size: 10px;" class="styled-select hide">
+                                                &nbsp;&nbsp; 
                                                 <label for="inputmontodetraccion" id="lblmontodetraccion" class="control-label hide" style="width: 87px; font-size: 10px;">Monto Detracción:</label>
                                                 <input type="text" name="inputmontodetraccion" id="inputmontodetraccion" value="0.00" tabindex="5" style="width: 55px; font-size: 10px;" class="styled-select hide" disabled>
                                                 &nbsp;&nbsp;
-                                                <label for="inputmontodetraccionreferencial" id="lblmontodetraccionreferencial" class="control-label hide" style="width: 90px; font-size: 10px;">Monto Referencial:</label>
+                                                <label for="inputmontodetraccionreferencial" id="lblmontodetraccionreferencial" class="control-label hide" style="width: 90px; font-size: 10px;">Monto Detracción Referencial:</label>
                                                 <input type="text" name="inputmontodetraccionreferencial" id="inputmontodetraccionreferencial" value="0.00" tabindex="5" style="width: 50px; font-size: 10px;" class="styled-select hide">
-                                                &nbsp;&nbsp;
+                                            </div>
+                                            <div id="divdetraccion" class="form-group">
                                                 <label for="inputdescripciondetraccion" id="lbldescripciondetraccion" class="control-label hide" style="width: 68px; font-size: 10px;">Descripción:</label>
-                                                <input type="text" name="inputdescripciondetraccion" id="inputdescripciondetraccion" tabindex="6" style="width: 520px; font-size: 10px;" class="styled-select hide">                                             
+                                                <input type="text" name="inputdescripciondetraccion" id="inputdescripciondetraccion" tabindex="6" style="width: 520px; font-size: 10px;" class="styled-select hide" value="OPERACIÓN SUJETA AL SPOT CON EL GOBIERNO CENTRAL CTA. CTE. N° 00-054-014333">  
                                             </div>
                                             <div id="divguia" class="form-group">
                                                 <input type="hidden" id="rowdetalleguia" value="0">
@@ -424,10 +424,10 @@
                                                 </select>
                                                 &nbsp;&nbsp;&nbsp;
                                                 <label for="motivonota" class="control-label" style="width: 45px; font-size: 10px;">Motivo:</label>
-                                                <input type="text" name="motivonota" id="motivonota" tabindex="103" style="width: 350px; font-size: 10px;" class="styled-select">
+                                                <textarea rows='3' name="motivonota" id="motivonota" tabindex="103" style="resize:none; width: 350px; font-size: 10px; vertical-align: top; text-transform:uppercase" class="styled-select"></textarea>
                                             </div>
                                             <div class="form-group">
-                                                
+
                                             </div>
                                         </div>
                                     </div>
@@ -515,7 +515,7 @@
                                                         <tr>
                                                             <th style="display: none">Item</th>
                                                             <th>Código</th>
-                                                            <th>Descripción</th>
+                                                            <th style="width: 240px">Descripción</th>
                                                             <th>Unidad</th>
                                                             <th>Cantidad</th>
                                                             <th style="display: none">Precio Unitario</th>
@@ -753,6 +753,8 @@
                         $(window).load(function () {
                             cargarCorrelativo();
                             $('#ruc').focus();
+                            //$('#tipodocumento').val('6');
+                            cambiarporcomprobante();
                         });
 
                         var cargarCorrelativo = function () {
@@ -806,6 +808,7 @@
                                     $('#divdetraccion').removeClass('hide');
                                     $('#divguia').removeClass('hide');
                                     $('#ruc').focus();
+                                    $('#tipodocumento').val('6');
                                     break;
                                 case '03':
                                     $('#lblruc').addClass('hide');
@@ -820,6 +823,7 @@
                                     $('#divdetraccion').removeClass('hide');
                                     $('#divguia').removeClass('hide');
                                     $('#ruc').focus();
+                                    $('#tipodocumento').val('1');
                                     break;
                                 case '07':
                                     var tiporef = $('#tipocomprobanteref').val();
@@ -833,11 +837,13 @@
                                         $('#tipodocumento').addClass('hide');
                                         $('#lblrazonsocial').removeClass('hide');
                                         $('#lblnombre').addClass('hide');
+                                        $('#tipodocumento').val('6');
                                     } else {
                                         $('#lblruc').addClass('hide');
                                         $('#tipodocumento').removeClass('hide');
                                         $('#lblrazonsocial').addClass('hide');
                                         $('#lblnombre').removeClass('hide');
+                                        $('#tipodocumento').val('1');
                                     }
                                     $('#divdetraccion').addClass('hide');
                                     $('#divguia').addClass('hide');
@@ -857,11 +863,13 @@
                                         $('#tipodocumento').addClass('hide');
                                         $('#lblrazonsocial').removeClass('hide');
                                         $('#lblnombre').addClass('hide');
+                                        $('#tipodocumento').val('6');
                                     } else {
                                         $('#lblruc').addClass('hide');
                                         $('#tipodocumento').removeClass('hide');
                                         $('#lblrazonsocial').addClass('hide');
                                         $('#lblnombre').removeClass('hide');
+                                        $('#tipodocumento').val('1');
                                     }
                                     $('#divdetraccion').addClass('hide');
                                     $('#divguia').addClass('hide');
@@ -870,71 +878,100 @@
                                     $('#nrodocumentoref').focus();
                                     break;
                             }
-                            
+
                         };
+
+                        $("#motivonota").focusout(function () {
+                            var motivonota = $("#motivonota").val().split("\n").join(" ").trim();
+                            if (motivonota.length > 250.0) {
+                                alertify.error("EL MOTIVO DE LA NOTA NO PUEDE SER MAYOR A 250 CARACTERES");
+                                $('#motivonota').val('');
+                            } else {
+                                $('#motivonota').val(motivonota);
+                            }
+                        });
+
+                        $("#inputtipocambio").focusout(function () {
+                            var tipocambio = parseFloat(Number($("#inputtipocambio").val())).toFixed(3);
+                            if (tipocambio === 'NaN') {
+                                $("#inputtipocambio").val('0.000');
+                            } else {
+                                $("#inputtipocambio").val(tipocambio.toString());
+                            }
+                            calculardetraccion();
+                        });
+
+                        $("#inputmontodetraccionreferencial").focusout(function () {
+                            var tipocambio = parseFloat(Number($("#inputmontodetraccionreferencial").val())).toFixed(2);
+                            if (tipocambio === 'NaN') {
+                                $("#inputmontodetraccionreferencial").val('0.00');
+                            } else {
+                                $("#inputmontodetraccionreferencial").val(tipocambio.toString());
+                            }
+                        });
+
+                        $('#moneda').change(function () {
+                            var moneda = $('#moneda').val();
+                            if (moneda === 'PEN') {
+                                $('.lab_mon').text('S/');
+                            } else if (moneda === 'USD') {
+                                $('.lab_mon').text('$');
+                            } else if (moneda === 'EUR') {
+                                $('.lab_mon').text('€');
+                            }
+
+                            if ($('#switch-detraccion').prop("checked")) {
+                                calculardetraccion();
+                            }
+                        });
 
                         $('#tipocomprobante').change(function () {
                             $('#tipocomprobanteref').val('01');
                             cargarCorrelativo();
                             cambiarporcomprobante();
                         });
-                        
+
                         $('#tipocomprobanteref').change(function () {
                             cargarCorrelativo();
                             cambiarporcomprobante();
                         });
 
-                        $("#switch-exportacion").click(function () {
-                            if ($(this).prop("checked")) {
-                                $('label.lblExportacion').html("Si");
-                                $("#switch-operaciongratuita").attr("disabled", "disabled");
-                            } else {
-                                $('label.lblExportacion').html("No");
-                                $("#switch-operaciongratuita").removeAttr("disabled");
-                            }
-                        });
-
                         $("#switch-operaciongratuita").click(function () {
                             if ($(this).prop("checked")) {
                                 $('label.lblOperacionGratuita').html("Si");
-                                $("#switch-exportacion").attr("disabled", "disabled");
-                                if ($('#switch-detraccion').prop("checked")) {
-                                    $('#lblmontodetraccionreferencial').removeClass('hide');
-                                    $('#inputmontodetraccionreferencial').removeClass('hide');
-                                    $('#lblporcentajedetraccion').addClass('hide');
-                                    $('#cbporcentajedetraccion').addClass('hide');
-                                    $('#lblmontodetraccion').addClass('hide');
-                                    $('#inputmontodetraccion').addClass('hide');
-                                    $('#lbldescripciondetraccion').removeClass('hide');
-                                    $('#inputdescripciondetraccion').removeClass('hide');
-                                    $('#inputdescripciondetraccion').focus();
-                                }
+                                $('#switch-detraccion').prop('checked', false);
+                                $("#switch-detraccion").attr("disabled", "disabled");
+                                $('#lblmontodetraccionreferencial').addClass('hide');
+                                $('#inputmontodetraccionreferencial').addClass('hide');
+                                $('#lblporcentajedetraccion').addClass('hide');
+                                $('#cbporcentajedetraccion').addClass('hide');
+                                $('#lblmontodetraccion').addClass('hide');
+                                $('#inputmontodetraccion').addClass('hide');
+                                $('#lbldescripciondetraccion').addClass('hide');
+                                $('#inputdescripciondetraccion').addClass('hide');
+                                $('#lbltipocambio').addClass('hide');
+                                $('#inputtipocambio').addClass('hide');
                             } else {
                                 $('label.lblOperacionGratuita').html("No");
-                                $("#switch-exportacion").removeAttr("disabled");
-                                if ($('#switch-detraccion').prop("checked")) {
-                                    $('#lblmontodetraccionreferencial').addClass('hide');
-                                    $('#inputmontodetraccionreferencial').addClass('hide');
-                                    $('#lblporcentajedetraccion').removeClass('hide');
-                                    $('#cbporcentajedetraccion').removeClass('hide');
-                                    $('#lblmontodetraccion').removeClass('hide');
-                                    $('#inputmontodetraccion').removeClass('hide');
-                                    var porcDetraccion = $('#cbporcentajedetraccion').val();
-                                    var importa_total = $('#total_venta').val();
-                                    var monto_detraccion = Number(porcDetraccion) * Number(importa_total) / 100;
-                                    $('#inputmontodetraccion').val(parseFloat(monto_detraccion).toFixed(2));
-                                    $('#lbldescripciondetraccion').removeClass('hide');
-                                    $('#inputdescripciondetraccion').removeClass('hide');
-                                    $('#inputdescripciondetraccion').focus();
-                                }
+                                $("#switch-detraccion").removeAttr("disabled");
                             }
                         });
 
                         function calculardetraccion() {
+                            var moneda = $('#moneda').val();
                             var porcDetraccion = $('#cbporcentajedetraccion').val();
                             var importa_total = $('#total_venta').val();
-                            var monto_detraccion = Number(porcDetraccion) * Number(importa_total) / 100;
-                            $('#inputmontodetraccion').val(parseFloat(monto_detraccion).toFixed(2));
+                            var tipocambio = $('#inputtipocambio').val();
+                            if (moneda !== 'PEN') {
+                                if (tipocambio === '0.000') {
+                                    alertify.error("DEBE INGRESAR TIPO DE CAMBIO DIFERENTE A CERO.");
+                                }
+                                var monto_detraccion = Number(porcDetraccion) * Number(importa_total) * Number(tipocambio) / 100;
+                                $('#inputmontodetraccion').val(parseFloat(monto_detraccion).toFixed(2));
+                            } else {
+                                var monto_detraccion = Number(porcDetraccion) * Number(importa_total) / 100;
+                                $('#inputmontodetraccion').val(parseFloat(monto_detraccion).toFixed(2));
+                            }
                         }
 
                         $('#cbporcentajedetraccion').change(function () {
@@ -943,20 +980,15 @@
 
                         $('#switch-detraccion').click(function () {
                             if ($(this).prop("checked")) {
-                                if ($('#switch-operaciongratuita').prop("checked")) {
-                                    $('#lblmontodetraccionreferencial').removeClass('hide');
-                                    $('#inputmontodetraccionreferencial').removeClass('hide');
-                                    $('#lblporcentajedetraccion').addClass('hide');
-                                    $('#cbporcentajedetraccion').addClass('hide');
-                                    $('#lblmontodetraccion').addClass('hide');
-                                    $('#inputmontodetraccion').addClass('hide');
-                                } else {
-                                    $('#lblporcentajedetraccion').removeClass('hide');
-                                    $('#cbporcentajedetraccion').removeClass('hide');
-                                    $('#lblmontodetraccion').removeClass('hide');
-                                    $('#inputmontodetraccion').removeClass('hide');
-                                    calculardetraccion();
-                                }
+                                $('#lblporcentajedetraccion').removeClass('hide');
+                                $('#cbporcentajedetraccion').removeClass('hide');
+                                $('#lblmontodetraccion').removeClass('hide');
+                                $('#inputmontodetraccion').removeClass('hide');
+                                $('#lblmontodetraccionreferencial').removeClass('hide');
+                                $('#inputmontodetraccionreferencial').removeClass('hide');
+                                $('#lbltipocambio').removeClass('hide');
+                                $('#inputtipocambio').removeClass('hide');
+                                calculardetraccion();
                                 $('#flag_detraccion').val('S');
                                 $('#lbldescripciondetraccion').removeClass('hide');
                                 $('#inputdescripciondetraccion').removeClass('hide');
@@ -977,9 +1009,12 @@
                             $('#inputmontodetraccion').addClass('hide');
                             $('#lbldescripciondetraccion').addClass('hide');
                             $('#inputdescripciondetraccion').addClass('hide');
+                            $('#lbltipocambio').addClass('hide');
+                            $('#inputtipocambio').addClass('hide');
                             $('#inputmontodetraccion').val('0.00');
                             $('#inputmontodetraccionreferencial').val('0.00');
-                            $('#inputdescripciondetraccion').val('');
+                            $('#inputtipocambio').val('0.000');
+                            //$('#inputdescripciondetraccion').val('');
                             $('#flag_detraccion').val('N');
                         }
 
@@ -1010,13 +1045,13 @@
                                 $('#flagGuia').val('N');
                             }
                         });
-                        
-                        function resetearCamposGuia(){    
+
+                        function resetearCamposGuia() {
                             $('#detalleGuia tbody').remove();
                             $('#detalleGuia').addClass('hide');
                             $('#flagGuia').val('N');
                         }
-                        
+
                         $('#switch-negociable').removeAttr('checked').on('click', function () {
                             //$validation = this.checked;
                             if (this.checked) {
@@ -1145,12 +1180,16 @@
                             $('#rowdetalle').val(newRow);
                             var nuevaFila = "<tr>";
                             nuevaFila += "<td style='display: none;'>" + newRow + "</td>"; //Numero ITEM
-                            nuevaFila += "<td><input size='5' id='codigo_" + newRow + "' type='text' style='font-size:10px; text-transform:uppercase;' tabindex='51'></td>"; //CODIGO
-                            nuevaFila += "<td><textarea id='descripcion_" + newRow + "' rows='5' style='resize:none; font-size:10px; width:300px; text-transform:uppercase;' tabindex='52'></textarea></td>"; //DESCRIPCION
-                            nuevaFila += "<td>ZZ</td>"; //UNIDAD MEDIDA
-                            nuevaFila += "<td><input type='number' class='input_cantidad' id='cantidad_" + newRow + "' value='1' min='1' max='100' style='font-size:10px' tabindex='53'></td>";//CANTIDAD
+                            nuevaFila += "<td><input size='9' class='input_codigo' id='codigo_" + newRow + "' type='text' style='font-size:10px; text-transform:uppercase;' tabindex='51'></td>"; //CODIGO
+                            nuevaFila += "<td><textarea class='input_descripcion' id='descripcion_" + newRow + "' rows='5' style='resize:none; font-size:10px; width:100%; text-transform:uppercase;' tabindex='52'></textarea></td>"; //DESCRIPCION
+                            //nuevaFila += "<td>ZZ</td>"; //UNIDAD MEDIDA
+                            nuevaFila += "<td><select class='select_unidadmedida' id='unidadmedida_" + newRow + "' style='font-size:10px;' tabindex='55'>" //UNIDAD MEDIDA
+                                    + "<option value='ZZ' selected>ZZ</option>"
+                                    + "<option value='NIU'>NIU</option>"
+                                    + "</select></td>";
+                            nuevaFila += "<td><input type='number' class='input_cantidad' id='cantidad_" + newRow + "' value='1.000' style='font-size:10px; width: 6em' tabindex='53'></td>";//CANTIDAD
                             nuevaFila += "<td style='display: none;'><input  id='precio_uni_" + newRow + "' placeholder='0.00' size='5' type='text' style='font-size:10px' disabled></td>";//PRECIO UNITARIO
-                            nuevaFila += "<td><input class='valor_unitario' id='valor_uni_" + newRow + "' placeholder='0.00' size='5' type='text' style='font-size:10px' tabindex='54'></td>";//VALOR UNITARIO
+                            nuevaFila += "<td><input class='valor_unitario' id='valor_uni_" + newRow + "' placeholder='0.00' size='7' type='text' style='font-size:10px' tabindex='54'></td>";//VALOR UNITARIO
                             nuevaFila += "<td id='precio_tot_" + newRow + "' style='display: none; font-size:10px;'>0.00</td>"; //PRECIO TOTAL SIN DCTO
                             nuevaFila += "<td id='valor_tot_" + newRow + "' style='display: none; font-size:10px;'>0.00</td>"; //VALOR TOTAL SIN DCTO
                             nuevaFila += "<td><select class='select_afectacion' id='afecto_igv_" + newRow + "' style='font-size:10px;' tabindex='55'>" //TIPO AFECTACION
@@ -1162,7 +1201,7 @@
                             nuevaFila += "<td id='isc_" + newRow + "' style='display: none; font-size:10px;'>0.00</td>"; // ISC
                             nuevaFila += "<td id='precio_uni_dscto_" + newRow + "' style='display: none; font-size:10px;'>0.00</td>"; // Precio unitario con DCTO
                             nuevaFila += "<td id='valor_uni_dscto_" + newRow + "' style='display: none; font-size:10px;'>0.00</td>"; // Valor unitario con DCTO
-                            nuevaFila += "<td><input class='monto_descuento' id='descuento_" + newRow + "' placeholder='0.00' size='5' type='text' style='font-size:10px' tabindex='56'></td>"; // DESCUENTO
+                            nuevaFila += "<td><input class='monto_descuento' id='descuento_" + newRow + "' placeholder='0.00' size='7' type='text' style='font-size:10px' tabindex='56'></td>"; // DESCUENTO
                             nuevaFila += "<td id='dscto_porc_" + newRow + "' style='display: none; font-size:10px;'>0.00</td>"; // DESCUENTO EN PORCENTAJE
                             nuevaFila += "<td id='dscto_mont_" + newRow + "' style='display: none; font-size:10px;'>0.00</td>"; // DESCUENTO EN MONTO
                             nuevaFila += "<td id='valor_tot_dscto_" + newRow + "' style='font-size:10px;'>0.00</td>"; // VALOR TOTAL
@@ -1238,6 +1277,49 @@
                             $('#precio_tot_dscto_' + orden).html(parseFloat(precioTotDscto).toFixed(2));
                             $('#precio_uni_dscto_' + orden).html(parseFloat(precioUniDscto).toFixed(2));
                         }
+
+                        $('#detalleVenta').on('focusout', '.input_cantidad', function () {
+                            var orden = $(this).parents('tr').find('td:eq(20)').find('button.eliminarDetalleVenta').attr('id');
+                            $('#cantidad_' + orden).val(parseFloat(Number($("#cantidad_" + orden).val())).toFixed(3).toString());
+                            calcular(orden);
+                            calcularTotales();
+                        });
+
+                        $('#detalleVenta').on('focusout', '.valor_unitario', function () {
+                            var orden = $(this).parents('tr').find('td:eq(20)').find('button.eliminarDetalleVenta').attr('id');
+                            $('#valor_uni_' + orden).val(parseFloat(Number($("#valor_uni_" + orden).val())).toFixed(2).toString());
+                            calcular(orden);
+                            calcularTotales();
+                        });
+
+                        $('#detalleVenta').on('focusout', '.monto_descuento', function () {
+                            var orden = $(this).parents('tr').find('td:eq(20)').find('button.eliminarDetalleVenta').attr('id');
+                            $('#descuento_' + orden).val(parseFloat(Number($("#descuento_" + orden).val())).toFixed(2).toString());
+                            calcular(orden);
+                            calcularTotales();
+                        });
+
+                        $('#detalleVenta').on('focusout', '.input_descripcion', function () {
+                            var orden = $(this).parents('tr').find('td:eq(20)').find('button.eliminarDetalleVenta').attr('id');
+                            var descripcion = $("#descripcion_" + orden).val().split("\n").join(" ").trim();
+                            if (descripcion.length > 250.0) {
+                                alertify.error("LA DESCRIPCIÓN DEL PRODUCTO O SERVICIO NO PUEDE SER MAYOR A 250 CARACTERES");
+                                $('#descripcion_' + orden).val('');
+                            } else {
+                                $('#descripcion_' + orden).val(descripcion);
+                            }
+                        });
+
+                        $('#detalleVenta').on('focusout', '.input_codigo', function () {
+                            var orden = $(this).parents('tr').find('td:eq(20)').find('button.eliminarDetalleVenta').attr('id');
+                            var codigo = $("#codigo_" + orden).val().trim();
+                            if (codigo.length > 30.0) {
+                                alertify.error("EL CÓDIGO DEL PRODUCTO O SERVICIO NO PUEDE SER MAYOR A 30 CARACTERES");
+                                $('#codigo_' + orden).val('');
+                            } else {
+                                $('#codigo_' + orden).val(codigo);
+                            }
+                        });
 
                         $('#detalleVenta').on('change', '.input_cantidad', function () {
                             var orden = $(this).parents('tr').find('td:eq(20)').find('button.eliminarDetalleVenta').attr('id');
@@ -1387,6 +1469,7 @@
                             calcularTotales();
                         });
 
+                        //REGISTRAR COMPROBANTE
                         $('.registrar_comprobante').click(function (event) {
                             event.preventDefault();
 
@@ -1411,6 +1494,14 @@
                                     });
                                     return retVal;
                                 }).get();
+                            }
+
+                            if ($('#switch-detraccion').prop('checked')) {
+                                if ($('#inputmontodetraccion').val() === '0.00') {
+                                    alertify.error("EL TIPO CAMBIO NO PUEDE SER CERO");
+                                    $('#inputtipocambio').focus();
+                                    return;
+                                }
                             }
 
                             var rowCount = $('#detalleVenta >tbody >tr').length;
@@ -1494,17 +1585,12 @@
                                         $('.divError').removeClass('tada animated');
                                     });
                                 } else {
-            <%--
-            $('#imprimir').attr('disabled', false);
-            var ruta;
-            if($('#tipocomprobante').val()==='1'){
-                ruta = '../ImprimirComprobante?tipo=BO&idventa=';
-            }else{
-                ruta = '../ImprimirComprobante?tipo=FA&idventa=';
-            }
-            $('#imprimir').attr('href', ruta + obj.idventa + '&total=' + $('#total_venta').val());
-            window.open(ruta + obj.idventa + '&total=' + $('#total_venta').val(), '_blank');
-            --%>
+
+
+                                    $('#imprimir').attr('disabled', false);
+                                    $('#imprimir').attr('href', '../Download?opcion=imprimir&linkpdf=' + obj.linkpdf);
+                                    window.open('../Download?opcion=imprimir&linkpdf=' + obj.linkpdf, '_blank');
+
                                     alertify.success(obj.mensaje);
                                 }
                             });
@@ -1553,9 +1639,8 @@
                             $('#montopagado').addClass('hide');
                             $('#montopagado').val('');
 
-                            $('#switch-exportacion').prop('checked', false);
                             $('#switch-operaciongratuita').prop('checked', false);
-                            
+
                             resetearCamposDetraccion();
 
                             resetearCamposGuia();

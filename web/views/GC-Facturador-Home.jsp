@@ -158,13 +158,13 @@
                             <li class="">
                                 <a href="views/GC-Facturador-RegistrarComprobante.jsp">
                                     <i class="menu-icon fa fa-caret-right"></i>
-                                    Registrar Comprobantes
+                                    Registrar Comprobante
                                 </a>
 
                                 <b class="arrow"></b>
                             </li>
                             <li class="">
-                                <a href="views/">
+                                <a href="views/GC-Facturador-ListarComprobantes.jsp">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Listar Comprobantes
                                 </a>
@@ -172,7 +172,7 @@
                                 <b class="arrow"></b>
                             </li>
                             <li class="">
-                                <a href="views/">
+                                <a href="#">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Anulaciones
                                 </a>
@@ -180,7 +180,7 @@
                                 <b class="arrow"></b>
                             </li>
                             <li class="">
-                                <a href="views/">
+                                <a href="#">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Listar Comunicaciones de Baja
                                 </a>
@@ -188,7 +188,7 @@
                                 <b class="arrow"></b>
                             </li>
                             <li class="">
-                                <a href="views/">
+                                <a href="#">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Proceso Resumen Diario
                                 </a>
@@ -196,7 +196,7 @@
                                 <b class="arrow"></b>
                             </li>
                             <li class="">
-                                <a href="views/">
+                                <a href="#">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Listar Resumenes Diarios
                                 </a>

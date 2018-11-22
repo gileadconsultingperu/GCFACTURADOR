@@ -44,9 +44,9 @@ public class GCFacturador_Cliente_Servlet extends HttpServlet {
                 String numerodocumento = request.getParameter("numerodocumento");
                 String url = "";
                 if (idtipodocumento.equals("1")) {
-                    url = "http://localhost:8080/WSRUC/webresources/generic/consultadni?dni=" + numerodocumento;
+                    url = "http://localhost:8084/WSRUC/webresources/generic/consultadni?dni=" + numerodocumento;
                 } else {
-                    url = "http://localhost:8080/WSRUC/webresources/generic/consultaruc?ruc=" + numerodocumento;
+                    url = "http://localhost:8084/WSRUC/webresources/generic/consultaruc?ruc=" + numerodocumento;
                 }
 
                 String aux = null;
