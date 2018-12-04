@@ -369,7 +369,7 @@ public class GCFacturador_Comprobante_Servlet extends HttpServlet {
                 //ENVIAR DATOS AL SERVICIO FACTURACION ELECTRONICA
                 //Obtener montos en letras
                 NumeroLetra NumLetra = new NumeroLetra();
-                String numeroenletra = NumLetra.Convertir(total_venta.toString(), true);
+                String numeroenletra = NumLetra.Convertir(request.getParameter("total_venta"), true);
 
                 //Obtener datos de la cabecera
                 query = "SELECT e.ruc emp_ruc, e.razon_social emp_denominacion, '6' emp_tipodocumento, e.codigo_ubidistrito emp_ubigeo, "
